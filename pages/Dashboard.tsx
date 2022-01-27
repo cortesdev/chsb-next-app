@@ -4,37 +4,38 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 
+interface DashboardProps {
+  chsbCirculatingSupplyTokens: number,
+  chsbStackedTokens: number,
+  chsbStackedPercentage: number,
+  chsbYieldPledgedTokens: number,
+  chsbInYieldPercentage: number,
+  totalSupplyBurnedPercentage: number
+}
 
-//  const data = {
-//    "chsbCirculatingSupplyTokens":227885076,
-//    "chsbStackedTokens":139665000,
-//    "chsbStackedPercentage":19.83,
-//    "chsbYieldPledgedTokens":331754774,
-//    "chsbInYieldPercentage":47.11,
-//    "chsbBurnedTokens":4898917.07,
-//    "totalSupplyBurnedPercentage":0.6956675457607038
-//   }
 
 const Dashboard: NextPage = () => {
-
-  const [isLoading, setIsLoading] = useState(true)
-  const [dashboardData, setDashboardData] = useState(null)
-
+  const [ dashboardData, setDashboardData ] = useState<DashboardProps>()
+  const [isLoading, setIsLoading] = useState(false)
+  
   useEffect(() => {
-    async function fetchDashboardData() {
-      const response = await fetch('https://chsb.my-test-domain.website/chsb-metrics')
-      const data = await response.json()
-      setDashboardData(data)    
-      setIsLoading(false)  
-    }
+      setIsLoading(true)
 
-    fetchDashboardData()      
+      fetch('https://chsb.my-test-domain.website/chsb-metrics')
+          .then(response => response.json())
+          .then(data => {
+            setDashboardData(data)
+              setIsLoading(false)
+          }).catch()
   }, [])
 
   if (isLoading) {
-    return <h2>Sorry still loading</h2>
+      return <p>Loading....</p>
   }
-
+  if (!dashboardData) {
+      return <p>No List to show</p>
+  }
+  
   return (
     <>
       <h1 className={styles.title}>
@@ -42,10 +43,8 @@ const Dashboard: NextPage = () => {
       </h1>
 
       <p className={styles.description}>
-       Circulating supply
-        <p className={styles.code}>
-          Circ. {dashboardData.chsbCirculatingSupplyTokens}
-        </p>
+        percentage
+        <p className={styles.code}>Circ. {dashboardData?.chsbYieldPledgedTokens}</p>
       </p>
 
       <div className={styles.grid}>
