@@ -1,9 +1,10 @@
 import { FC } from "react";
 import { Grid, Stack } from "@mui/material";
 import Image from "next/image";
-import { Cell, Customized, LabelList, Pie, PieChart } from "recharts";
 import { FormattedNumber } from "react-intl";
 import type { Payload } from "recharts/types/component/DefaultLegendContent";
+import styled from "@emotion/styled";
+import DashboardChart from "../DashboardChart";
 
 interface DashboardProps {
   dashboard: any;
@@ -12,61 +13,31 @@ interface props {
   payload: Payload[];
 }
 
+const StyledStack = styled(Stack)`
+  border-bottom: 1px solid #c7cacf;
+  height: 80px;
+  padding: 0.5rem 0;
+`;
+
+const ImageStack = styled(Stack)`
+  width: 3rem;
+  height: 2.5rem;
+  align-self: center;
+`;
+
+const StyledStackItem = styled(Stack)`
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 0.9rem;
+`;
+
+const StyledSpan = styled.span`
+  font-size: 0.7rem;
+`;
+
 const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
-  function per(num: number, amount: number) {
-    return (num * amount) / 1000;
-  }
-
-  const data02 = [
-    {
-      name: "Remaining circulating supply",
-      value: dashboard?.chsbCirculatingSupplyTokens,
-      color: "#ccf3e8",
-    },
-    {
-      name: "CHSB staked",
-      value: dashboard?.chsbStackedTokens,
-      color: "#14e4bf",
-    },
-    {
-      name: "CHSB in Yield Program",
-      value: per(
-        dashboard?.chsbCirculatingSupplyTokens,
-        dashboard?.chsbInYieldPercentage
-      ),
-      color: "#9373ff",
-    },
-    {
-      name: "Circulating supply burned",
-      value: dashboard?.chsbBurnedTokens,
-      color: "#364053",
-    },
-    {
-      name: "CHSB in buyback pool",
-      value: dashboard?.chsbYieldPledgedTokens,
-      color: "#3d9cff",
-    },
-  ];
-
-  const CustomLabel = (payload: any) => {
-    const { x, y, name, fill } = payload;
-
-    return (
-      <g>
-        <defs>
-          <path
-            fill={fill}
-            transform="translate(16, 16)"
-            d="M16,0A16,16,0,1,1,-16,0A16,16,0,1,1,16,0"
-          />
-        </defs>
-
-        <text x={x} y={y} fill="#000" dy={-6} textAnchor="middle">
-          <tspan fontSize="10">{name}</tspan>
-        </text>
-      </g>
-    );
-  };
+   
 
   return (
     <section>
@@ -78,118 +49,105 @@ const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
           md={12}
           rowSpacing={4}
           spacing={24}
-          columnSpacing={{ sm: 4 }}
+          columnSpacing={{ sm: 2 }}
         >
-          <Grid item>
-            <Stack direction="row">
-              <Image
-                src="/images/icon1.png"
-                alt="Picture of the author"
-                width={72}
-                height={30}
-              />
-              <Stack>
-                <h3>Remaining circulating supply </h3>
+          <Grid item sm={6}>
+            <StyledStack direction="row">
+              <ImageStack direction="row" sx={{ width: 80, height: 50 }}>
+                <Image
+                  src="/images/icon1.png"
+                  alt="Picture of the author"
+                  width={60}
+                  height={20}
+                />
+              </ImageStack>
+              <StyledStackItem direction="row">
+                <h4>Remaining circulating supply </h4>
                 <FormattedNumber
                   value={dashboard?.chsbCirculatingSupplyTokens}
                 />
-              </Stack>
-            </Stack>
+              </StyledStackItem>
+            </StyledStack>
 
-            <Stack direction="row">
-              <Image
-                src="/images/icon2.png"
-                alt="Picture of the author"
-                width={72}
-                height={30}
-              />
-              <Stack direction="column">
-                <h3>CHSB staked</h3>
+            <StyledStack direction="row">
+              <ImageStack direction="row" sx={{ width: 80, height: 50 }}>
+                <Image
+                  src="/images/icon2.png"
+                  alt="Picture of the author"
+                  width={59}
+                  height={20}
+                />
+              </ImageStack>
+              <StyledStackItem direction="row">
+                <h4>CHSB staked</h4>
+                <Stack sx={{ textAlign: "right" }}>
+                  <FormattedNumber value={dashboard?.chsbStackedTokens} />
 
-                <FormattedNumber value={dashboard?.chsbStackedTokens} />
+                  <StyledSpan>(10.75% of circulating supply)</StyledSpan>
+                </Stack>
+              </StyledStackItem>
+            </StyledStack>
 
-                <span>(10.75% of circulating supply)</span>
-              </Stack>
-            </Stack>
+            <StyledStack direction="row">
+              <ImageStack direction="row" sx={{ width: 80, height: 50 }}>
+                <Image
+                  src="/images/icon3.png"
+                  alt="Picture of the author"
+                  width={55}
+                  height={20}
+                />
+              </ImageStack>
+              <StyledStackItem direction="row">
+                <h4>CHSB in Yield </h4>
 
-            <Stack direction="row">
-              <Image
-                src="/images/icon3.png"
-                alt="Picture of the author"
-                width={70}
-                height={30}
-              />
+                <Stack sx={{ textAlign: "right" }}>
+                  <FormattedNumber value={dashboard?.chsbYieldPledgedTokens} />
 
-              <Stack direction="column">
-                <h3>CHSB in Yield Program </h3>
-                <FormattedNumber value={dashboard?.chsbYieldPledgedTokens} />
+                  <StyledSpan>
+                    ({dashboard?.chsbInYieldPercentage} % of circulating supply)
+                  </StyledSpan>
+                </Stack>
+              </StyledStackItem>
+            </StyledStack>
 
+            <StyledStack direction="row">
+              <ImageStack direction="row" sx={{ width: 80, height: 50 }}>
+                <Image
+                  src="/images/icon4.png"
+                  alt="Picture of the author"
+                  width={58}
+                  height={20}
+                />
+              </ImageStack>
+
+              <StyledStackItem direction="row">
+                <h4>Circulating supply burned </h4>
                 <span>
-                  ({dashboard?.chsbInYieldPercentage} % of circulating supply)
+                  <FormattedNumber value={dashboard?.chsbBurnedTokens} />
                 </span>
-              </Stack>
-            </Stack>
+              </StyledStackItem>
+            </StyledStack>
 
-            <Stack direction="row">
-              <Image
-                src="/images/icon4.png"
-                alt="Picture of the author"
-                width={70}
-                height={30}
-              />
-              <Stack direction="column">
-                <h3>Circulating supply burned </h3>
-                <FormattedNumber value={dashboard?.chsbBurnedTokens} />
-              </Stack>
-            </Stack>
-
-            <Stack direction="row">
-              <Image
-                src="/images/icon5.png"
-                alt="Picture of the author"
-                width={72}
-                height={30}
-              />
-              <Stack direction="column">
-                <h3>CHSB in buyback pool </h3>
+            <StyledStack direction="row">
+              <ImageStack direction="row" sx={{ width: 80, height: 50 }}>
+                <Image
+                  src="/images/icon5.png"
+                  alt="Picture of the author"
+                  width={58}
+                  height={20}
+                />
+              </ImageStack>
+              <StyledStackItem direction="row">
+                <h4>CHSB in buyback pool </h4>
                 <FormattedNumber
                   value={dashboard?.totalSupplyBurnedPercentage}
                 />
-              </Stack>
-            </Stack>
+              </StyledStackItem>
+            </StyledStack>
           </Grid>
 
-          <Grid item>
-            <PieChart
-              width={500}
-              height={250}
-              style={{ position: "absolute", right: "15%" }}
-            >
-              <Pie
-                data={data02}
-                dataKey="value"
-                // nameKey="name"
-                cx="50%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={100}
-                fill="#000"
-              >
-                <LabelList
-                  dataKey="name"
-                  color="#000"
-                  position="outside"
-                  content={<CustomLabel />}
-                  style={{
-                    stroke: "none",
-                    fill: "rgb(142, 150, 161)",
-                  }}
-                />
-                {data02.map((entry, index) => (
-                  <Cell key={`bar-${[index]}`} fill={data02[index].color} />
-                ))}
-              </Pie>
-            </PieChart>
+          <Grid item sm={6}>
+            <DashboardChart dashboard={dashboard} />
           </Grid>
         </Grid>
       </div>

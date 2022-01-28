@@ -7,6 +7,14 @@ body {
     sans-serif;
 }
 
+a {
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}
+
 h1,
 h2,
 h3,
@@ -77,7 +85,9 @@ a {
 }
 
 .hero {
-  background:  url(/background.png), linear-gradient(to right, #181e29 0%, #0f9379 95.87%) no-repeat center center fixed;
+  background: url(/background.png),
+    linear-gradient(to right, #181e29 0%, #0f9379 95.87%) no-repeat center
+      center fixed;
   background-size: cover;
   height: 100%;
   overflow: hidden;

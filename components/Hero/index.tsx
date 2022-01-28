@@ -1,25 +1,64 @@
-import {
-  ResponsiveContainer,
-  AreaChart,
-  XAxis,
-  YAxis,
-  Area,
-  Tooltip,
-  CartesianGrid,
-} from "recharts";
-import { format, parseISO } from "date-fns";
 import styled from "@emotion/styled";
-import { Stack } from "@mui/material";
+import { Avatar, Stack } from "@mui/material";
+import Link from "next/link";
 import { FC } from "react";
-
+import HeroChart from "../HeroChart";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import zIndex from "@mui/material/styles/zIndex";
 interface HeroProps {
   chartData: any;
 }
 
 const StyledStack = styled(Stack)`
   background: #001c1b47;
-  padding: 3rem 1rem 1rem 0;
+  padding: 0;
   border-radius: 1rem;
+  overflow: hidden;
+`;
+
+const StyledImage = styled.img`
+  background: #001c1b47;
+  padding: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+`;
+
+const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
+  background: #333;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  padding: 0.1rem;
+  margin: 0 -0.3rem;
+  z-index: 2;
+`;
+
+const StyledChartHeader = styled(Stack)`
+  align-items: center;
+  background: #001c1b47;
+  margin-bottom: 1rem;
+  padding: 2rem;
+
+  h3,
+  span {
+    line-height: inherit;
+    margin-left: 1.3rem;
+  }
+
+  span {
+    color: red;
+  }
+`;
+
+const StyledChartFooter = styled.div`
+  background: #001c1b47;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  text-align: center;
+  cursor: pointer;
+
+  :hover {
+    background: #00000012;
+  }
 `;
 interface IKeys {
   price: number;
@@ -27,7 +66,6 @@ interface IKeys {
 }
 
 const Hero: FC<HeroProps> = ({ chartData }) => {
-
   const data = chartData.map((val: IKeys) => ({
     value: val.price,
     date: val.time,
@@ -44,7 +82,7 @@ const Hero: FC<HeroProps> = ({ chartData }) => {
   // console.log(data);
 
   return (
-    <div className="hero dark">
+    <section className="hero dark">
       <div className="container">
         <Stack sx={{ alignItems: "center" }}>
           <h1>CHSB Performance Metrics</h1>
@@ -54,46 +92,30 @@ const Hero: FC<HeroProps> = ({ chartData }) => {
           </p>
         </Stack>
         <StyledStack>
-          <ResponsiveContainer width="100%" height={400}>
-            <AreaChart data={data}>
-              <defs>
-                <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#06B081" stopOpacity={1} />
-                  <stop offset="75%" stopColor="#0f3230" stopOpacity={1} />
-                </linearGradient>
-              </defs>
+          <StyledChartHeader direction="row">
+            <StyledImage
+              alt="flag"
+              src="/images/usa.png"
+              style={{ maxWidth: "2.1rem" }}
+            />
+            <StyledArrowForwardIcon />
+            <Avatar
+              alt="flag"
+              src="/images/chsb.png"
+              style={{ width: "2rem" }}
+            />
 
-              <Area dataKey="value" stroke="#06B081" fill="url(#color)" />
+            <Stack direction="column">
+              <h3>CHSB 0.90</h3>
+              <span>-4.8% 24h</span>
+            </Stack>
+          </StyledChartHeader>
+          <HeroChart chartData={chartData} />
 
-              <XAxis
-                dataKey="date"
-                axisLine={false}
-                tickLine={false}
-                tickFormatter={(str) => {
-                  const date = parseISO(str);
-                  if (date.getDate() % 7 === 0) {
-                    return format(date, "MMM, d");
-                  }
-                  return "";
-                }}
-              />
-
-              <YAxis
-                dataKey="value"
-                axisLine={false}
-                tickLine={false}
-                tickCount={8}
-                tickFormatter={(number) => `$${number.toFixed(2)}`}
-              />
-
-              <Tooltip />
-
-              <CartesianGrid opacity={0.1} vertical={false} />
-            </AreaChart>
-          </ResponsiveContainer>
+          <StyledChartFooter>All</StyledChartFooter>
         </StyledStack>
       </div>
-    </div>
+    </section>
   );
 };
 
