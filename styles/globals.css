@@ -67,13 +67,10 @@ a {
 }
 
 .hero {
-  background-image: url(/background.png),
-    radial-gradient(
-      118.67% 151.15% at 50.36% 64.8%,
-      rgba(1, 195, 141, 0.7) 0%,
-      rgba(25, 30, 41, 0.7) 86.46%
-    ),
-    linear-gradient(rgb(25, 30, 41) 0%, rgb(140, 142, 148) 95.87%);
+  background:  url(/background.png), linear-gradient(to right, #181e29 0%, #0f9379 95.87%) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
 }
 
 .dark {
