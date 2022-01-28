@@ -15,7 +15,7 @@ const Dashboard: NextPage<DashboardProps> = ({ dashboard }) => {
   return (
     <section>
       <div className="container">
-        <h2>A breakdown of CHSB's circulating supply</h2>
+        <h2>A breakdown of CHSBs circulating supply</h2>
         <div>
           <div>
             <h3>Remaining circulating supply </h3>
@@ -24,13 +24,12 @@ const Dashboard: NextPage<DashboardProps> = ({ dashboard }) => {
 
           <div>
             <h3>CHSB staked</h3>
-            <p>{per(dashboard?.chsbCirculatingSupplyTokens, .8925)}</p>
+            <p>{per(dashboard?.chsbCirculatingSupplyTokens, 0.8925)}</p>
           </div>
 
           <div>
             <h3>CHSB in Yield Program </h3>
-            <p>{per(dashboard?.chsbYieldPledgedTokens, .8925)}</p>
-
+            <p>{per(dashboard?.chsbYieldPledgedTokens, 0.8925)}</p>
           </div>
 
           <div>
