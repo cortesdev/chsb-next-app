@@ -38,11 +38,10 @@ const Home: NextPage = () => {
     fetchData();
   }, []);
 
-  console.log(chatdData);
   console.log(dashboardData);
 
   if (isLoading) {
-    return <p>Loading....</p>;
+    return <p>Loading...</p>;
   }
 
   if (!dashboardData) {
@@ -57,6 +56,7 @@ const Home: NextPage = () => {
         <meta property="og:title" content="My newer title" key="title" />
         <meta property="og:image" content="/cover.png"  key="image" />
         <link rel="icon" href="/favicon.ico" />
+        
         <link
           rel="preload"
           href="/fonts/TTCommons-ExtraLight.woff2"

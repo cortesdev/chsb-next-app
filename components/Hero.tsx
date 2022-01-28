@@ -21,21 +21,32 @@ const StyledStack = styled(Stack)`
   padding: 3rem 1rem 1rem 0;
   border-radius: 1rem;
 `;
+interface IKeys {
+  price: number;
+  time: string;
+}
 
 const Hero: NextPage<HeroProps> = ({ chartData }) => {
-  const data = [];
 
-  for (let num = 700; num >= 0; num--) {
-    data.push({
-      date: subDays(new Date(), num).toISOString().substr(0, 10),
-      value: 1 + Math.random(),
-    });
-  }
+  const data = chartData.map((val: IKeys) => ({
+    value: val.price,
+    date: val.time,
+  }));
+
+  // const data = [];
+  // for (let i = 0; i < chartData.length; i++) {
+  //   data.push({
+  //     date: chartData[i].time,
+  //     value: chartData[i].price
+  //   });
+  // }
+
+  // console.log(data);
 
   return (
     <div className="hero dark">
       <div className="container">
-        <Stack sx={{alignItems: 'center'}}>
+        <Stack sx={{ alignItems: "center" }}>
           <h1>CHSB Performance Metrics</h1>
           <p>
             Deep-dive into the statistics of CHSB and understand the mechanics

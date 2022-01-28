@@ -54,11 +54,9 @@ const Dashboard: NextPage<DashboardProps> = ({ dashboard }) => {
             </Stack>
 
             <Stack direction="row">
-              <Image
+              <img
                 src="/images/icon2.png"
-                alt="Picture of the author"
-                width={72}
-                height={30}
+                alt="Picture of the author"               
               />
               <Stack direction="column">
                 <h3>CHSB staked</h3>
