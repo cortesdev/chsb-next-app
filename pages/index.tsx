@@ -1,9 +1,7 @@
 import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import { dashboardData } from "../interfaces/dashboardProps";
 import styles from "../styles/Home.module.css";
 import Dashboard from "../components/Dashboard";
 import Hero from "../components/Hero";

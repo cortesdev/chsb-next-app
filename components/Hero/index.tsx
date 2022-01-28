@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import {
   ResponsiveContainer,
   AreaChart,
@@ -8,16 +7,17 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-import { format, parseISO, subDays } from "date-fns";
+import { format, parseISO } from "date-fns";
 import styled from "@emotion/styled";
 import { Stack } from "@mui/material";
+import { FC } from "react";
 
 interface HeroProps {
   chartData: any;
 }
 
 const StyledStack = styled(Stack)`
-  background: #0f3230;
+  background: #001c1b47;
   padding: 3rem 1rem 1rem 0;
   border-radius: 1rem;
 `;
@@ -26,7 +26,7 @@ interface IKeys {
   time: string;
 }
 
-const Hero: NextPage<HeroProps> = ({ chartData }) => {
+const Hero: FC<HeroProps> = ({ chartData }) => {
 
   const data = chartData.map((val: IKeys) => ({
     value: val.price,
