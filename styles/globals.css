@@ -85,7 +85,7 @@ a {
 }
 
 .hero {
-  background: url(/background.png),
+  background: url(/images/background.png),
     linear-gradient(to right, #181e29 0%, #0f9379 95.87%) no-repeat center
       center fixed;
   background-size: cover;

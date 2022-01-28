@@ -67,7 +67,7 @@ const DashboardChart: FC<DashboardChartProps> = ({ dashboard }) => {
       <PieChart
         width={500}
         height={250}
-        style={{ position: "absolute", right: "15%" }}
+        style={{ margin: '0 auto' }}
       >
         <Pie
           data={data02}

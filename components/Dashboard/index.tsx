@@ -37,21 +37,12 @@ const StyledSpan = styled.span`
 `;
 
 const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
-   
-
   return (
     <section>
       <div className="container">
         <h2>A breakdown of CHSBs circulating supply</h2>
-        <Grid
-          container
-          sm={6}
-          md={12}
-          rowSpacing={4}
-          spacing={24}
-          columnSpacing={{ sm: 2 }}
-        >
-          <Grid item sm={6}>
+        <Grid container rowSpacing={4} spacing={24} columnSpacing={{ sm: 2 }}>
+          <Grid item sm={12} md={6}>
             <StyledStack direction="row">
               <ImageStack direction="row" sx={{ width: 80, height: 50 }}>
                 <Image
@@ -146,7 +137,7 @@ const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
             </StyledStack>
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item sm={12} md={6}>
             <DashboardChart dashboard={dashboard} />
           </Grid>
         </Grid>
