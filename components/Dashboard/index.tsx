@@ -1,9 +1,9 @@
+import { FC } from "react";
 import { Grid, Stack } from "@mui/material";
 import Image from "next/image";
-import { Cell, LabelList,  Pie, PieChart } from "recharts";
+import { Cell, Customized, LabelList, Pie, PieChart } from "recharts";
 import { FormattedNumber } from "react-intl";
 import type { Payload } from "recharts/types/component/DefaultLegendContent";
-import { FC } from "react";
 
 interface DashboardProps {
   dashboard: any;
@@ -21,12 +21,12 @@ const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
     {
       name: "Remaining circulating supply",
       value: dashboard?.chsbCirculatingSupplyTokens,
-      color: "#ccf3e8"
+      color: "#ccf3e8",
     },
     {
       name: "CHSB staked",
       value: dashboard?.chsbStackedTokens,
-      color: "#14e4bf"
+      color: "#14e4bf",
     },
     {
       name: "CHSB in Yield Program",
@@ -34,7 +34,7 @@ const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
         dashboard?.chsbCirculatingSupplyTokens,
         dashboard?.chsbInYieldPercentage
       ),
-      color: "#9373ff"
+      color: "#9373ff",
     },
     {
       name: "Circulating supply burned",
@@ -44,19 +44,29 @@ const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
     {
       name: "CHSB in buyback pool",
       value: dashboard?.chsbYieldPledgedTokens,
-      color: "#3d9cff"
+      color: "#3d9cff",
     },
   ];
- 
-  const CustomLegend = () => (
-    <>
-      {data02.map((key, index) => (
-        <div key={`item-${index}`}>
-          <span>{key.name}</span>
-        </div>
-      ))}
-    </>
-  );
+
+  const CustomLabel = (payload: any) => {
+    const { x, y, name, fill } = payload;
+
+    return (
+      <g>
+        <defs>
+          <path
+            fill={fill}
+            transform="translate(16, 16)"
+            d="M16,0A16,16,0,1,1,-16,0A16,16,0,1,1,16,0"
+          />
+        </defs>
+
+        <text x={x} y={y} fill="#000" dy={-6} textAnchor="middle">
+          <tspan fontSize="10">{name}</tspan>
+        </text>
+      </g>
+    );
+  };
 
   return (
     <section>
@@ -64,7 +74,8 @@ const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
         <h2>A breakdown of CHSBs circulating supply</h2>
         <Grid
           container
-          md={6}
+          sm={6}
+          md={12}
           rowSpacing={4}
           spacing={24}
           columnSpacing={{ sm: 4 }}
@@ -149,22 +160,30 @@ const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
           </Grid>
 
           <Grid item>
-            <PieChart width={730} height={250}>
+            <PieChart
+              width={500}
+              height={250}
+              style={{ position: "absolute", right: "15%" }}
+            >
               <Pie
                 data={data02}
                 dataKey="value"
                 // nameKey="name"
                 cx="50%"
                 cy="50%"
-                innerRadius={70}
+                innerRadius={60}
                 outerRadius={100}
-                fill="#82ca9d"
+                fill="#000"
               >
                 <LabelList
                   dataKey="name"
                   color="#000"
                   position="outside"
-                  style={{ fontSize: '80%', fill: '#000' }}
+                  content={<CustomLabel />}
+                  style={{
+                    stroke: "none",
+                    fill: "rgb(142, 150, 161)",
+                  }}
                 />
                 {data02.map((entry, index) => (
                   <Cell key={`bar-${[index]}`} fill={data02[index].color} />
