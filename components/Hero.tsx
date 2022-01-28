@@ -35,11 +35,13 @@ const Hero: NextPage<HeroProps> = ({ chartData }) => {
   return (
     <div className="hero dark">
       <div className="container">
-        <h2>CHSB Performance Metrics</h2>
-        <p>
-          Deep-dive into the statistics of CHSB and understand the mechanics of
-          the SwissBorg ecosystem.
-        </p>
+        <Stack sx={{alignItems: 'center'}}>
+          <h1>CHSB Performance Metrics</h1>
+          <p>
+            Deep-dive into the statistics of CHSB and understand the mechanics
+            of the SwissBorg ecosystem.
+          </p>
+        </Stack>
         <StyledStack>
           <ResponsiveContainer width="100%" height={400}>
             <AreaChart data={data}>
