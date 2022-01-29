@@ -8,20 +8,12 @@ import {
   CartesianGrid,
 } from "recharts";
 import { format, parseISO } from "date-fns";
-import styled from "@emotion/styled";
-import { Stack, useMediaQuery, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 import { FC } from "react";
-import { theme } from "../../../utils/theme";
 
 interface HeroChartProps {
   chartData: any;
 }
-
-const StyledStack = styled(Stack)`
-  background: #001c1b47;
-  padding: 3rem 1rem 1rem 0;
-  border-radius: 1rem;
-`;
 interface IKeys {
   price: number;
   time: string;
@@ -29,22 +21,11 @@ interface IKeys {
 
 const HeroChart: FC<HeroChartProps> = ({ chartData }) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const data = chartData.map((val: IKeys) => ({
     value: val.price,
     date: val.time,
   }));
-
-  // const data = [];
-  // for (let i = 0; i < chartData.length; i++) {
-  //   data.push({
-  //     date: chartData[i].time,
-  //     value: chartData[i].price
-  //   });
-  // }
-
-  // console.log(data);
 
   return (
     <>

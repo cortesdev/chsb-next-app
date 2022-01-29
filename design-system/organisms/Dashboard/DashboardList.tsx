@@ -19,10 +19,21 @@ interface props {
   payload: Payload[];
 }
 
-const StyledStack = styled(Stack)`
-  border-bottom: 1px solid #c7cacf;
+const StyledStack = styled(Stack)<{ theme?: Theme }>`
+  border-bottom: 1px solid ${(props) => props.theme.colors.dark20} ;
   height: 80px;
   padding: 0.5rem 0;
+`;
+
+const StyledFormattedNumber = styled.h2<{ theme?: Theme }>`
+  color: ${(props) => props.theme.colors.primary};
+  margin-bottom: 0.1rem;
+  margin-top: 0;
+
+  @media (min-width: 900px) {
+    margin-bottom: 0.2rem;
+    margin-top: inherit;
+  }
 `;
 
 const ImageStack = styled(Stack)`
@@ -32,23 +43,25 @@ const ImageStack = styled(Stack)`
 `;
 
 const StyledStackItem = styled(Stack)`
-  @media (min-width: 900px) {
-    align-items: center;
-  }
-  
-  justify-content: space-between;
   width: 100%;
   padding: 0 0.9rem;
+  height: 4.2rem;
+
+  @media (min-width: 900px) {
+    align-items: center;
+    justify-content: space-between;
+  }
 `;
 
-const StyledText = styled.span`
+const StyledText = styled.span<{ theme?: Theme }>`
   font-size: 0.7rem;
+  color: ${(props) => props.theme.colors.primary};
 `;
 
 const DashboardList: FC<DashboardListProps> = ({ dashboard }) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+
   const dashboardItems = [
     {
       url: "/images/icon1.png",
@@ -87,7 +100,6 @@ const DashboardList: FC<DashboardListProps> = ({ dashboard }) => {
     },
   ];
 
-
   // console.log(dashboardItems)
   return (
     <>
@@ -97,17 +109,19 @@ const DashboardList: FC<DashboardListProps> = ({ dashboard }) => {
             <Image src={item.url} alt={item.alt} width={60} height={20} />
           </ImageStack>
 
-          <StyledStackItem direction={isMobile ? "column" : "row"}>
-
-            {isMobile ? (
+          <StyledStackItem direction={isTablet ? "column-reverse" : "row"}>
+            {isTablet ? (
               <Typography>{item.headline}</Typography>
             ) : (
               <h4>{item.headline}</h4>
             )}
 
-            <Stack textAlign={isMobile ? "left" : "right"}>
-              <FormattedNumber value={item.number} />
-              <StyledText>{item.text}</StyledText>
+            <Stack textAlign={isTablet ? "left" : "right"}>
+              <StyledFormattedNumber>
+                <FormattedNumber value={item.number} />
+              </StyledFormattedNumber>
+
+              <StyledText >{item.text}</StyledText>
             </Stack>
           </StyledStackItem>
         </StyledStack>

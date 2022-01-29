@@ -42,7 +42,7 @@ interface IStyledTypography {
 }
 
 const StyledTypography = styled(MTypography)<IStyledTypography>`
-  font-size: ${({ fontSize }) => fontSize};
+  font-size: ${({ fontSize }) => fontSize} !important;
   letter-spacing: 0;
 
   display: ${(props) => (props.display ? "block" : "flex")};

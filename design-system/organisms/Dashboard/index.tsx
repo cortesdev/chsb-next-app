@@ -26,6 +26,7 @@ const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
     <PageWrapper style={{ margin: '3rem 0'}}>
      
         <Typography weight="bold" size="h3">A breakdown of CHSBs circulating supply</Typography>
+        
         <StyledGrid
           container
           rowSpacing={4}

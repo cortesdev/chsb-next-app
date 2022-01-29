@@ -1,6 +1,4 @@
-import styled from "@emotion/styled";
 import { useMediaQuery, useTheme } from "@mui/material";
-import Image from "next/image";
 import { FC } from "react";
 import {
   Cell,
@@ -10,18 +8,18 @@ import {
   PieChart,
   ResponsiveContainer,
 } from "recharts";
-import BulletPoint from "../../../public/images/bulletPoint.svg";
+// import BulletPoint from "../../../public/images/bulletPoint.svg";
 
 interface DashboardChartProps {
   dashboard: any;
 }
 
 
-interface ICustomLegend {
-  active: any;
-  payload: any;
-  label: any;
-}
+// interface ICustomLegend {
+//   active: any;
+//   payload: any;
+//   label: any;
+// }
 
 
 const DashboardChart: FC<DashboardChartProps> = ({ dashboard, ...props }) => {
@@ -36,12 +34,14 @@ const DashboardChart: FC<DashboardChartProps> = ({ dashboard, ...props }) => {
     {
       name: "Remaining circulating supply",
       value: dashboard?.chsbCirculatingSupplyTokens,
-      color: "#ccf3e8",
+      color: theme.colors.primaryTint8,
+      fill: theme.colors.primaryTint8,
     },
     {
       name: "CHSB staked",
       value: dashboard?.chsbStackedTokens,
-      color: "#14e4bf",
+      color: theme.colors.primary,
+      fill: theme.colors.primaryGradient,
     },
     {
       name: "CHSB in Yield Program",
@@ -49,17 +49,20 @@ const DashboardChart: FC<DashboardChartProps> = ({ dashboard, ...props }) => {
         dashboard?.chsbCirculatingSupplyTokens,
         dashboard?.chsbInYieldPercentage
       ),
-      color: "#9373ff",
+      color: theme.colors.purple,
+      fill: theme.colors.purpleGradient,
     },
     {
       name: "Circulating supply burned",
       value: dashboard?.chsbBurnedTokens,
-      color: "#364053",
+      color: theme.colors.dark,
+      fill: theme.colors.darkGradient,
     },
     {
       name: "CHSB in buyback pool",
       value: dashboard?.chsbYieldPledgedTokens,
-      color: "#3d9cff",
+      color: theme.colors.blue,
+      fill: theme.colors.blueGradient,
     },
   ];
 
@@ -126,8 +129,8 @@ const DashboardChart: FC<DashboardChartProps> = ({ dashboard, ...props }) => {
           // nameKey="name"
           cx="50%"
           cy="50%"
-          innerRadius={isMobile ? 40 : 60}
-          outerRadius={isMobile ? 60 : 90}
+          innerRadius={isMobile ? 70 : 60}
+          outerRadius={isMobile ? 150 : 100}
           fill="#000"
         >
           {isMobile ? (
