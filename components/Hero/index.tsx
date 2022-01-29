@@ -79,7 +79,7 @@ const Hero: FC<HeroProps> = ({ chartData }) => {
   //   });
   // }
 
-  // console.log(data);
+ 
 
   return (
     <section className="hero dark">
@@ -120,3 +120,5 @@ const Hero: FC<HeroProps> = ({ chartData }) => {
 };
 
 export default Hero;
+
+

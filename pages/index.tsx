@@ -36,8 +36,7 @@ const Home: NextPage = () => {
     fetchData();
   }, []);
 
-  console.log(dashboardData);
-
+ 
   if (isLoading) {
     return <p>Loading...</p>;
   }

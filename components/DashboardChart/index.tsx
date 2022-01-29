@@ -1,6 +1,5 @@
 import { FC } from "react";
-import { Cell, LabelList, Pie, PieChart } from "recharts";
- 
+import { Cell, LabelList, Pie, PieChart, ResponsiveContainer } from "recharts";
 
 interface DashboardChartProps {
   dashboard: any;
@@ -63,12 +62,8 @@ const DashboardChart: FC<DashboardChartProps> = ({ dashboard }) => {
   };
 
   return (
-    <div className="container">
-      <PieChart
-        width={500}
-        height={250}
-        style={{ margin: '0 auto' }}
-      >
+    <ResponsiveContainer width="100%" height={400}>
+      <PieChart style={{ margin: "0 auto" }}>
         <Pie
           data={data02}
           dataKey="value"
@@ -93,7 +88,7 @@ const DashboardChart: FC<DashboardChartProps> = ({ dashboard }) => {
           ))}
         </Pie>
       </PieChart>
-    </div>
+    </ResponsiveContainer>
   );
 };
 
