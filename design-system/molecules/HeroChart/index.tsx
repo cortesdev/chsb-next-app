@@ -9,8 +9,9 @@ import {
 } from "recharts";
 import { format, parseISO } from "date-fns";
 import styled from "@emotion/styled";
-import { Stack } from "@mui/material";
+import { Stack, useMediaQuery, useTheme } from "@mui/material";
 import { FC } from "react";
+import { theme } from "../../../utils/theme";
 
 interface HeroChartProps {
   chartData: any;
@@ -27,6 +28,9 @@ interface IKeys {
 }
 
 const HeroChart: FC<HeroChartProps> = ({ chartData }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const data = chartData.map((val: IKeys) => ({
     value: val.price,
     date: val.time,
@@ -44,22 +48,25 @@ const HeroChart: FC<HeroChartProps> = ({ chartData }) => {
 
   return (
     <>
-      <ResponsiveContainer width="106%" height={400}>
+      <ResponsiveContainer width="101%" height={300}>
         <AreaChart data={data}>
           <defs>
             <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#06B081" stopOpacity={1} />
-              <stop offset="75%" stopColor="#0f3230" stopOpacity={1} />
+              <stop offset="0%" stopColor={theme.colors.primaryShade2} stopOpacity={1} />
+              <stop offset="75%" stopColor={theme.colors.dark} stopOpacity={.5} />
             </linearGradient>
           </defs>
 
-          <Area dataKey="value" stroke="#06B081" fill="url(#color)" />
+          <Area dataKey="value" strokeWidth="2" stroke={theme.colors.primary} fill="url(#color)" />
 
           <XAxis
             dataKey="date"
             axisLine={false}
             tickLine={false}
             stroke="white"
+            mirror={true}
+            fontSize={13}
+            tickMargin={10}
             tickFormatter={(str) => {
               const date = parseISO(str);
               if (date.getDate() % 7 === 0) {
@@ -74,7 +81,9 @@ const HeroChart: FC<HeroChartProps> = ({ chartData }) => {
             axisLine={false}
             tickLine={false}
             orientation="right"
-            tickMargin={-50}
+            mirror={true}
+            fontSize={13}
+            tickMargin={10}
             stroke="white"
             tickCount={8}
             tickFormatter={(number) => `$${number.toFixed(2)}`}

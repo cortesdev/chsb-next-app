@@ -241,7 +241,7 @@ export const theme = createTheme({
   fonts: {
     body: {
       fontFamily: "chsb",
-      fontSize: "2.2rem",
+      fontSize: "1.8rem",
       lineHeight: "3.2rem",
     },
     bodyBold: {
@@ -251,7 +251,7 @@ export const theme = createTheme({
     },
     h1: {
       fontFamily: "chsb-bold",
-      fontSize: "8rem",
+      fontSize: "4rem",
       lineHeight: "1.1em",
     },
     h2: {

@@ -10,12 +10,9 @@ import Typography from "../../atoms/Typography";
 interface HeroProps {
   chartData: any;
 }
+ 
 
-interface StyledPageWrapperProps {
-  theme?: Theme;
-}
-
-const StyledPageWrapper = styled(PageWrapper)<StyledPageWrapperProps>`
+const StyledPageWrapper = styled(PageWrapper)<{ theme?: Theme }>`
   background: ${(props) =>
       `url(/images/background.png), ${props.theme.colors.secondaryGradient}`}
     no-repeat center center fixed;
@@ -23,6 +20,24 @@ const StyledPageWrapper = styled(PageWrapper)<StyledPageWrapperProps>`
   background-size: cover;
   height: 100%;
   overflow: hidden;
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  @media (min-width: 600px) {
+    h1 {
+      font-size: 4rem;
+    }
+  }
+`;
+
+const Headline = styled(Stack)`
+  padding: 3rem 0;
+
+  @media (min-width: 600px) {
+    padding: 4rem 0 3rem;
+  }
 `;
 
 const StyledStack = styled(Stack)`
@@ -30,6 +45,7 @@ const StyledStack = styled(Stack)`
   padding: 0;
   border-radius: 1rem;
   overflow: hidden;
+  margin-bottom: 3rem;
 `;
 
 const StyledImage = styled.img`
@@ -52,9 +68,9 @@ const StyledChartHeader = styled(Stack)`
   align-items: center;
   background: #001c1b47;
   margin-bottom: 1rem;
-  padding: 2rem;
+  padding: 1.5rem;
 
-  h3,
+  h4,
   span {
     line-height: inherit;
     margin-left: 1.3rem;
@@ -65,51 +81,34 @@ const StyledChartHeader = styled(Stack)`
   }
 `;
 
-const StyledChartFooter = styled.div`
-  background: #001c1b47;
-  margin-top: 1rem;
-  padding: 1rem 2rem;
+const StyledChartFooter = styled.div<{ theme?: Theme }>`
+  background:  ${(props) => props.theme.colors.dark};
+  margin-top: -.5rem;
+  padding: 1rem 1.5rem;
   text-align: center;
   cursor: pointer;
 
   :hover {
-    background: #00000012;
+    background: ${(props) => props.theme.colors.dark20};
   }
 `;
-
-interface IKeys {
-  price: number;
-  time: string;
-}
 
 const Hero: FC<HeroProps> = ({ chartData }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const data = chartData.map((val: IKeys) => ({
-    value: val.price,
-    date: val.time,
-  }));
-
-  // const data = [];
-  // for (let i = 0; i < chartData.length; i++) {
-  //   data.push({
-  //     date: chartData[i].time,
-  //     value: chartData[i].price
-  //   });
-  // }
-
   return (
     <StyledPageWrapper style={{ padding: "3rem inherit " }}>
-      <Stack sx={{ alignItems: "center" }}>
+      <Headline sx={{ alignItems: "center" }}>
         <Typography weight="bold" size="h1">
           CHSB Performance Metrics
         </Typography>
-        <Typography weight="regular" size="body">
+
+        <Typography size="body">
           Deep-dive into the statistics of CHSB and understand the mechanics of
           the SwissBorg ecosystem.
         </Typography>
-      </Stack>
+      </Headline>
 
       <StyledStack>
         <StyledChartHeader direction="row">
@@ -119,13 +118,18 @@ const Hero: FC<HeroProps> = ({ chartData }) => {
             style={{ maxWidth: "2.1rem" }}
           />
           <StyledArrowForwardIcon />
+          
           <Avatar alt="flag" src="/images/chsb.png" style={{ width: "2rem" }} />
 
           <Stack direction="column">
-            <h3>CHSB 0.90</h3>
-            <span>-4.8% 24h</span>
+            <Typography size="h4">CHSB 0.90</Typography>
+
+            <Typography size="span" color={theme.colors.red}>
+              -4.8% 24h
+            </Typography>
           </Stack>
         </StyledChartHeader>
+        
         <HeroChart chartData={chartData} />
 
         <StyledChartFooter>All</StyledChartFooter>

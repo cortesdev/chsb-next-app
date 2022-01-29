@@ -1,6 +1,5 @@
 import { FC } from "react";
 import {
-  Grid,
   Stack,
   Theme,
   Typography,
@@ -11,7 +10,6 @@ import Image from "next/image";
 import { FormattedNumber } from "react-intl";
 import type { Payload } from "recharts/types/component/DefaultLegendContent";
 import styled from "@emotion/styled";
-import DashboardChart from "../../molecules/DashboardChart";
 
 interface DashboardListProps {
   dashboard: any;

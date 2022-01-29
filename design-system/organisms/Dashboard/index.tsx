@@ -1,12 +1,11 @@
 import { FC } from "react";
-import { Grid, Stack, Theme } from "@mui/material";
-import Image from "next/image";
-import { FormattedNumber } from "react-intl";
+import { Grid, Theme } from "@mui/material";
 import type { Payload } from "recharts/types/component/DefaultLegendContent";
 import styled from "@emotion/styled";
 import DashboardChart from "../../molecules/DashboardChart";
 import DashboardList from "./DashboardList";
 import PageWrapper from "../../atoms/PageWrapper";
+import Typography from "../../atoms/Typography";
 
 interface DashboardProps {
   dashboard: any;
@@ -21,35 +20,12 @@ const StyledGrid = styled(Grid)`
     flex-direction: column-reverse;
   }
 `;
-
-const StyledStack = styled(Stack)`
-  border-bottom: 1px solid #c7cacf;
-  height: 80px;
-  padding: 0.5rem 0;
-`;
-
-const ImageStack = styled(Stack)`
-  width: 3rem;
-  height: 2.5rem;
-  align-self: center;
-`;
-
-const StyledStackItem = styled(Stack)`
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 0.9rem;
-`;
-
-const StyledSpan = styled.span`
-  font-size: 0.7rem;
-`;
-
+ 
 const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
   return (
-    <PageWrapper>
-      <div className="container">
-        <h2>A breakdown of CHSBs circulating supply</h2>
+    <PageWrapper style={{ margin: '3rem 0'}}>
+     
+        <Typography weight="bold" size="h3">A breakdown of CHSBs circulating supply</Typography>
         <StyledGrid
           container
           rowSpacing={4}
@@ -64,7 +40,6 @@ const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
             <DashboardChart dashboard={dashboard} />
           </Grid>
         </StyledGrid>
-      </div>
     </PageWrapper>
   );
 };

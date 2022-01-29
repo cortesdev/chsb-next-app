@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 
 export interface TypographyProps extends Omit<MTypographyProps, "variant"> {
-  weight: "bold" | "regular" | "thin" | "light" | "extralight" | "";
+  weight?: "bold" | "regular" | "thin" | "light" | "extralight";
   size?:
     | "body"
     | "bodyBold"
@@ -18,6 +18,8 @@ export interface TypographyProps extends Omit<MTypographyProps, "variant"> {
     | "h4"
     | "h5"
     | "h6"
+    | "span"
+    | "small"
     | "inherit"
     | "overline"
     | "subtitle1"
@@ -73,7 +75,7 @@ export const Typography: FC<TypographyProps> = (
   const fontSize =
     size && (size.includes("em") || size.includes("px")) ? size : undefined;
   const variant = (
-    size && !fontSize ? size : "body1"
+    size && !fontSize ? size : "body"
   ) as MTypographyProps["variant"];
 
   return (
