@@ -1,10 +1,13 @@
 import { colors, createTheme } from "@mui/material";
 
 declare module "@mui/material/styles" {
-  interface Theme {   
+  interface Theme {
+    background: {
+      color: string;
+    };
     status: {
-      danger: string,
-    },
+      danger: string;
+    };
     colors: {
       text: string;
       background: string;
@@ -42,6 +45,7 @@ declare module "@mui/material/styles" {
       red10: string;
       orange10: string;
       primaryGradient: string;
+      secondaryGradient: string;
       darkGradient: string;
       purpleGradient: string;
       orangeGradient: string;
@@ -87,10 +91,13 @@ declare module "@mui/material/styles" {
     };
   }
   // allow configuration using `createTheme`
-  interface ThemeOptions {   
+  interface ThemeOptions {
+    background: {
+      color?: string;
+    };
     status?: {
-      danger?: any,
-    },
+      danger?: any;
+    };
     colors?: {
       text?: string;
       background?: string;
@@ -128,6 +135,7 @@ declare module "@mui/material/styles" {
       red10?: string;
       orange10?: string;
       primaryGradient?: string;
+      secondaryGradient?: string;
       darkGradient?: string;
       purpleGradient?: string;
       orangeGradient?: string;
@@ -175,9 +183,12 @@ declare module "@mui/material/styles" {
 }
 
 export const theme = createTheme({
+  background: {
+    color: "#141414",
+  },
   status: {
     danger: colors.red,
-  },  
+  },
   colors: {
     // Brand Primary
     text: "#111",
@@ -221,6 +232,7 @@ export const theme = createTheme({
     orange10: "rgba(255,141,0, .1)",
     // gradients
     primaryGradient: "linear-gradient(to top, #08c692 0%, #14e4be 100%)",
+    secondaryGradient: "linear-gradient(to right, #181e29 0%, #0f9379 95.87%)",
     darkGradient: "linear-gradient(to top, #1a1f2a 0%, #353f52 100%)",
     purpleGradient: "linear-gradient(to right, #5b40ff 0%, #9171ff 100%)",
     orangeGradient: "linear-gradient(to right, #ff9103 0%, #febf33 100%)",

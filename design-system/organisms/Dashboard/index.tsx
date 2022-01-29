@@ -4,8 +4,9 @@ import Image from "next/image";
 import { FormattedNumber } from "react-intl";
 import type { Payload } from "recharts/types/component/DefaultLegendContent";
 import styled from "@emotion/styled";
-import DashboardChart from "../DashboardChart";
-import DashboardList from "./dashboardList";
+import DashboardChart from "../../molecules/DashboardChart";
+import DashboardList from "./DashboardList";
+import PageWrapper from "../../atoms/PageWrapper";
 
 interface DashboardProps {
   dashboard: any;
@@ -46,7 +47,7 @@ const StyledSpan = styled.span`
 
 const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
   return (
-    <section>
+    <PageWrapper>
       <div className="container">
         <h2>A breakdown of CHSBs circulating supply</h2>
         <StyledGrid
@@ -64,7 +65,7 @@ const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
           </Grid>
         </StyledGrid>
       </div>
-    </section>
+    </PageWrapper>
   );
 };
 

@@ -11,7 +11,7 @@ import Image from "next/image";
 import { FormattedNumber } from "react-intl";
 import type { Payload } from "recharts/types/component/DefaultLegendContent";
 import styled from "@emotion/styled";
-import DashboardChart from "../DashboardChart";
+import DashboardChart from "../../molecules/DashboardChart";
 
 interface DashboardListProps {
   dashboard: any;
@@ -48,6 +48,9 @@ const StyledText = styled.span`
 `;
 
 const DashboardList: FC<DashboardListProps> = ({ dashboard }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  
   const dashboardItems = [
     {
       url: "/images/icon1.png",
@@ -85,8 +88,7 @@ const DashboardList: FC<DashboardListProps> = ({ dashboard }) => {
       text: "",
     },
   ];
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
 
   // console.log(dashboardItems)
   return (
