@@ -5,6 +5,17 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import Dashboard from "../design-system/organisms/Dashboard";
 import Hero from "../design-system/organisms/Hero";
+import { CircularProgress, Stack } from "@mui/material";
+import styled from "@emotion/styled";
+import { theme } from "../utils/theme";
+
+const Loader = styled(Stack)`
+  margin: 10rem auto;
+  max-width: 4rem;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+`;
 
 const Home: NextPage = () => {
   const [dashboardData, setDashboardData] = useState([]);
@@ -37,7 +48,12 @@ const Home: NextPage = () => {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <Loader direction="column" color={theme.colors.primary}>
+        <CircularProgress color="success" />
+        Loading...
+      </Loader>
+    );
   }
 
   if (!dashboardData) {
@@ -48,11 +64,23 @@ const Home: NextPage = () => {
     <section className={styles.container}>
       <Head>
         <title>CHSB Dashboard</title>
-        <title>CHSB Dashboard - Lorem ipsum dolor sit amet, consectetur adipiscing elit</title>
-        <meta name="description" content="CHSB Dashboard App - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." />
+        <title>
+          CHSB Dashboard - Lorem ipsum dolor sit amet, consectetur adipiscing
+          elit
+        </title>
+        <meta
+          name="description"
+          content="CHSB Dashboard App - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+        />
         <meta property="og:title" content="CHSB Dashboard App - sample text" />
-        <meta property="og:description" content="ALorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." />
-        <meta property="og:url" content="https://chsb-next-app-cortesdev.vercel.app/"/>
+        <meta
+          property="og:description"
+          content="ALorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+        />
+        <meta
+          property="og:url"
+          content="https://chsb-next-app-cortesdev.vercel.app/"
+        />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/images/background.png" />
       </Head>
