@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Grid, Theme } from "@mui/material";
+import { Grid, Theme, useMediaQuery, useTheme } from "@mui/material";
 import type { Payload } from "recharts/types/component/DefaultLegendContent";
 import styled from "@emotion/styled";
 import DashboardChart from "../../molecules/DashboardChart";
@@ -27,14 +27,17 @@ const StyledGrid = styled(Grid)`
 `;
 
 const StyledHeadline = styled(Typography)`
-  margin: 0.8em auto;
+  margin: 4rem auto 2rem;
 `;
 
 const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <StyledPageWrapper>
-      <StyledHeadline weight="bold" size="h3">
-        A breakdown of CHSBs circulating supply
+      <StyledHeadline weight="bold" size={isMobile ? 'h5' : 'h4'}>
+        A breakdown of CHSB's circulating supply
       </StyledHeadline>
 
       <StyledGrid
