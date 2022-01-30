@@ -1,6 +1,4 @@
-import { Grid, Stack, useMediaQuery, useTheme } from "@mui/material";
-import { Box } from "@mui/system";
-import { FC } from "react";
+import {useMediaQuery, useTheme } from "@mui/material";
 import {
   Cell,
   LabelList,
@@ -10,7 +8,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import BulletPoint from "../../atoms/BulletPoint";
-
 
 
 const DashboardChart = ({ dashboard }) => {
