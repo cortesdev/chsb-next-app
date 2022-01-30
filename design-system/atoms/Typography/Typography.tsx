@@ -47,12 +47,7 @@ const StyledTypography = styled(MTypography)<IStyledTypography>`
 
   display: ${(props) => (props.display ? "block" : "flex")};
   align-items: center;
-  color: ${(props) =>
-    props.color
-      ? props.color === "contrastColor"
-        ? props.theme.palette.primary.contrastText
-        : props.color
-      : "currentColor"} !important;
+  color: ${({ color }) => color};
 
   &.truncate {
     overflow: hidden;

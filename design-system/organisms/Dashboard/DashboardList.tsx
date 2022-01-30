@@ -1,26 +1,17 @@
 import { FC } from "react";
-import {
-  Stack,
-  Theme,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Stack, Theme, useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
 import { FormattedNumber } from "react-intl";
-import type { Payload } from "recharts/types/component/DefaultLegendContent";
 import styled from "@emotion/styled";
+import Typography from "../../atoms/Typography";
 
 interface DashboardListProps {
   dashboard: any;
   theme?: Theme;
 }
-interface props {
-  payload: Payload[];
-}
 
 const StyledStack = styled(Stack)<{ theme?: Theme }>`
-  border-bottom: 1px solid ${(props) => props.theme.colors.dark20} ;
+  border-bottom: 1px solid ${(props) => props.theme.colors.dark20};
   height: 80px;
   padding: 0.5rem 0;
 `;
@@ -29,6 +20,7 @@ const StyledFormattedNumber = styled.h2<{ theme?: Theme }>`
   color: ${(props) => props.theme.colors.primary};
   margin-bottom: 0.1rem;
   margin-top: 0;
+  margin-left: 0.8rem;
 
   @media (min-width: 900px) {
     margin-bottom: 0.2rem;
@@ -44,7 +36,6 @@ const ImageStack = styled(Stack)`
 
 const StyledStackItem = styled(Stack)`
   width: 100%;
-  padding: 0 0.9rem;
   height: 4.2rem;
 
   @media (min-width: 900px) {
@@ -53,14 +44,35 @@ const StyledStackItem = styled(Stack)`
   }
 `;
 
+const StyledTypography = styled(Typography)<{ theme?: Theme }>`
+  margin-left: 0.8rem;
+  font-size: 1rem;
+  color: ${(props) => props.theme.colors.dark80};
+
+  @media (min-width: 1000px) {
+    font-size: 1.6rem;
+    color: ${(props) => props.theme.colors.dark};
+  }
+`;
+
 const StyledText = styled.span<{ theme?: Theme }>`
-  font-size: 0.7rem;
+  font-size: 0.8rem;
+  margin-left: 0.8rem;
   color: ${(props) => props.theme.colors.primary};
 `;
 
 const DashboardList: FC<DashboardListProps> = ({ dashboard }) => {
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  const sum =
+    dashboard?.chsbCirculatingSupplyTokens +
+    dashboard?.chsbBurnedTokens +
+    dashboard?.chsbStackedTokens -
+    dashboard?.chsbYieldPledgedTokens;
+
+  function per(num: number, amount: number) {
+    return (num * amount) / 1000;
+  }
 
   const dashboardItems = [
     {
@@ -95,12 +107,11 @@ const DashboardList: FC<DashboardListProps> = ({ dashboard }) => {
       url: "/images/icon5.png",
       alt: "item icon",
       headline: "CHSB in buyback pool",
-      number: dashboard?.totalSupplyBurnedPercentage,
+      number: per(sum, dashboard?.totalSupplyBurnedPercentage),
       text: "",
     },
   ];
 
-  // console.log(dashboardItems)
   return (
     <>
       {dashboardItems.map((item, index) => (
@@ -110,18 +121,16 @@ const DashboardList: FC<DashboardListProps> = ({ dashboard }) => {
           </ImageStack>
 
           <StyledStackItem direction={isTablet ? "column-reverse" : "row"}>
-            {isTablet ? (
-              <Typography>{item.headline}</Typography>
-            ) : (
-              <h4>{item.headline}</h4>
-            )}
+            <StyledTypography size={isTablet ? "h4" : "h3"}>
+              {item.headline}
+            </StyledTypography>
 
             <Stack textAlign={isTablet ? "left" : "right"}>
               <StyledFormattedNumber>
                 <FormattedNumber value={item.number} />
               </StyledFormattedNumber>
 
-              <StyledText >{item.text}</StyledText>
+              <StyledText>{item.text}</StyledText>
             </Stack>
           </StyledStackItem>
         </StyledStack>

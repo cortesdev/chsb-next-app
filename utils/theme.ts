@@ -203,7 +203,7 @@ export const theme = createTheme({
     // Neutral
     white: "#fff",
     neutralBase: "#8f96a1",
-    dark: "#232936",
+    dark: "#191e29",
     // Accent Base
     blue: "#2c95ff",
     purple: "#5a3fff",
@@ -232,7 +232,7 @@ export const theme = createTheme({
     orange10: "rgba(255,141,0, .1)",
     // gradients
     primaryGradient: "linear-gradient(to top, #08c692 0%, #14e4be 100%)",
-    secondaryGradient: "linear-gradient(to right, #181e29 0%, #0f9379 95.87%)",
+    secondaryGradient: "linear-gradient(to right, #191e29 15%, #03c38d 110%)",
     darkGradient: "linear-gradient(to top, #1a1f2a 0%, #353f52 100%)",
     purpleGradient: "linear-gradient(to right, #5b40ff 0%, #9171ff 100%)",
     orangeGradient: "linear-gradient(to right, #ff9103 0%, #febf33 100%)",

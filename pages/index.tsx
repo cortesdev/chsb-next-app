@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import Dashboard from "../design-system/organisms/Dashboard";
+import SampleChart from "../design-system/molecules/DashboardChart";
 import Hero from "../design-system/organisms/Hero";
 import PageWrapper from "../design-system/atoms/PageWrapper";
 
@@ -57,42 +58,12 @@ const Home: NextPage = () => {
         <meta property="og:title" content="My newer title" key="title" />
         <meta property="og:image" content="/cover.png" key="image" />
         <link rel="icon" href="/favicon.ico" />
-
-        <link
-          rel="preload"
-          href="/fonts/TTCommons-ExtraLight.woff2"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/TTCommons-Light.woff2"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/TTCommons-Thin.woff2"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/TTCommons-Regular.woff2"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/TTCommons-DemiBold.woff2"
-          as="font"
-          crossOrigin=""
-        />
       </Head>
-        <main>
-          <Hero chartData={chatdData} />
-          <Dashboard dashboard={dashboardData} />
-        </main>
+
+      <main>
+        <Hero chartData={chatdData} />
+        <Dashboard dashboard={dashboardData} />
+      </main>
     </section>
   );
 };
