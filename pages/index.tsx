@@ -54,7 +54,7 @@ const Home: NextPage = () => {
         <meta property="og:description" content="ALorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." />
         <meta property="og:url" content="https://chsb-next-app-cortesdev.vercel.app/"/>
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/images/chsb.png" />
+        <meta property="og:image" content="/images/background.png" />
       </Head>
 
       <main>
