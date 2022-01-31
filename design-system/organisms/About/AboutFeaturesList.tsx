@@ -57,7 +57,7 @@ export const AboutFeaturesList: FC = () => {
             <Typography
               weight="bold"
               size="body"
-              sx={{ minHeight: 30, marginBottom: 4 }}
+              sx={{ minHeight: 30, marginBottom: 4, alignItems: "baseline !important"  }}
             >
               {items.subheadline}
             </Typography>
