@@ -1,11 +1,10 @@
 import axios from "axios";
 import type { NextPage } from "next";
-import Head from "next/head";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import Dashboard from "../design-system/organisms/Dashboard";
 import Hero from "../design-system/organisms/Hero";
-import { Stack } from "@mui/material";
+import { Stack, useMediaQuery } from "@mui/material";
 import styled from "@emotion/styled";
 import { theme } from "../utils/theme";
 import About from "../design-system/organisms/About";
@@ -23,6 +22,8 @@ const Home: NextPage = () => {
   const [dashboardData, setDashboardData] = useState([]);
   const [chatdData, setChartData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
   const fetchData = () => {
     const dashboardApi = "https://chsb.my-test-domain.website/chsb-metrics";
@@ -70,9 +71,14 @@ const Home: NextPage = () => {
       <Seo />
       <section className={styles.container}>
         <main>
-          <Hero chartData={chatdData} />
-          <Dashboard dashboard={dashboardData} />
-          <About />
+          <Hero chartData={chatdData} isTablet={isTablet} isMobile={isMobile} />
+
+          <Dashboard
+            dashboard={dashboardData}
+            isTablet={isTablet}
+            isMobile={isMobile}
+          />
+          <About isTablet={isTablet} isMobile={isMobile} />
         </main>
       </section>
     </>

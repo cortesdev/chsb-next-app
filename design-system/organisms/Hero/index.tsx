@@ -16,6 +16,8 @@ import Typography from "../../atoms/Typography";
 
 interface HeroProps {
   chartData: any;
+  isMobile: any;
+  isTablet: any;
 }
 
 const StyledSection = styled.section<{ theme?: Theme }>`
@@ -99,7 +101,7 @@ const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
 
 const StyledChartHeader = styled(Stack)<{ theme?: Theme }>`
   align-items: center;
-  background: ${(props) => props.theme.colors.dark20};
+  background: #30353e;
   margin-bottom: 1rem;
   padding: 1.5rem;
   width: 10rem;
@@ -147,9 +149,8 @@ const StyledChartFooter = styled.div<{ theme?: Theme }>`
   }
 `;
 
-const Hero: FC<HeroProps> = ({ chartData }) => {
+const Hero: FC<HeroProps> = ({ chartData, isMobile }) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <StyledSection style={{ padding: "3rem inherit" }}>
@@ -170,12 +171,12 @@ const Hero: FC<HeroProps> = ({ chartData }) => {
             <Stack direction="row">
               <StyledImage
                 alt="flag"
-                src="/images/usa.png"
+                src={isMobile ? '/images/usa.png' : '/svg/addCountry.svg'}
                 style={{
                   minWidth: "34px",
                   maxWidth: "2.1rem",
-                  height: "2rem",
-                  marginTop: ".2rem",
+                  height: "2.21rem",
+                  marginTop: "2.1rem",
                 }}
               />
 
