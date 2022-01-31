@@ -37,8 +37,8 @@ export const AboutFeaturesList: FC = () => {
               padding: 4,
               display: "flex",
               flexDirection: "column",
-              borderRadius: 3,
-            }}
+              borderRadius: 4,
+             }}
           >
             {items.subheadline && (
               <Chip
@@ -49,7 +49,7 @@ export const AboutFeaturesList: FC = () => {
                   background: `${theme.colors.primaryTint9}`,
                   color: `${theme.colors.primary}`,
                   marginBottom: 1,
-                }}
+                }}                
                 label={items.subheadline}
               />
             )}
