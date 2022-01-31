@@ -1,4 +1,4 @@
-import { Button, Card, Grid, Stack } from "@mui/material";
+import { Button, Card, Chip, Grid, Stack } from "@mui/material";
 import Image from "next/image";
 import React, { FC } from "react";
 import Typography from "../../atoms/Typography";
@@ -20,15 +20,13 @@ export const AboutFeaturesList: FC = () => {
         <FlexSpacer minHeight={4} />
 
         <Typography weight="bold" size="h3">
-          What are its key features?
+          The SwissBorg Token (CHSB) key features
         </Typography>
 
         <FlexSpacer minHeight={2} />
 
         <Typography size="body">
-          SwissBorg community members can participate and invest in the
-          SwissBorg ecosystem with our CHSB multi-utility token issued on the
-          Ethereum blockchain.
+          With SwissBorg, you have the opportunity not only to be a user but to become a real contributor by holding CHSB tokens and benefiting from the growth of the ecosystem.
         </Typography>
       </Stack>
 
@@ -39,9 +37,23 @@ export const AboutFeaturesList: FC = () => {
               padding: 4,
               display: "flex",
               flexDirection: "column",
-              borderRadius: 3
+              borderRadius: 3,
             }}
           >
+            {items.subheadline && (
+              <Chip
+                sx={{
+                  width: "40%",
+                  maxWidth: "50%",
+                  fontSize: ".6rem",
+                  background: `${theme.colors.primaryTint9}`,
+                  color: `${theme.colors.primary}`,
+                  marginBottom: 1,
+                }}
+                label={items.subheadline}
+              />
+            )}
+
             <Stack direction="row" mb={2}>
               <Image width="40" height="40" src={items.url} alt={items.alt} />
 
@@ -56,14 +68,6 @@ export const AboutFeaturesList: FC = () => {
             </Stack>
 
             <Typography
-              weight="bold"
-              size="body"
-              sx={{ minHeight: 30, marginBottom: 4, alignItems: "baseline !important"  }}
-            >
-              {items.subheadline}
-            </Typography>
-
-            <Typography
               size="body"
               sx={{ minHeight: 130, alignItems: "baseline !important" }}
             >
@@ -71,15 +75,16 @@ export const AboutFeaturesList: FC = () => {
             </Typography>
 
             <FlexSpacer minHeight={2} />
-
-            <Button
-              variant="outlined"
-              color="primary"
-              fullWidth
-              sx={{ marginTop: "auto" }}
-            >
-              {items.headline}
-            </Button>
+            {items.button && (
+              <Button
+                variant="outlined"
+                color="primary"
+                fullWidth
+                sx={{ marginTop: "auto", fontSize: ".7rem" }}
+              >
+                {items.button}
+              </Button>
+            )}
           </Card>
         </Grid>
       ))}

@@ -15,6 +15,7 @@ interface AboutProps {
   isMobile?: any;
   isTablet?: any;
 }
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -96,7 +97,7 @@ const About: FC<AboutProps> = ({ isTablet, isMobile }) => {
               columnSpacing={{ sm: 3 }}
               direction={isTablet ? "column-reverse" : "row"}
             >
-              <AboutChsb />
+              <AboutChsb isTablet={isTablet} />
             </Grid>
           </TabPanel>
 

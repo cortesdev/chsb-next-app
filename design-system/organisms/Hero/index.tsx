@@ -175,8 +175,8 @@ const Hero: FC<HeroProps> = ({ chartData, isMobile }) => {
                 style={{
                   minWidth: "34px",
                   maxWidth: "2.1rem",
-                  height: "2.21rem",
-                  marginTop: "2.1rem",
+                  height: "2.1rem",
+                  marginTop: ".21rem",
                 }}
               />
 

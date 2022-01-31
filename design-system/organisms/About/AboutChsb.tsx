@@ -3,7 +3,11 @@ import React, { FC } from "react";
 import FlexSpacer from "../../atoms/FlexSpacer";
 import Typography from "../../atoms/Typography";
 
-export const AboutChsb: FC = () => {
+interface AboutChsbProps  {
+  isTablet: any;
+}
+
+export const AboutChsb: FC<AboutChsbProps> = ({isTablet}) => {
   return (
     <>
       <Grid item xs={12} md={6}>
@@ -18,7 +22,7 @@ export const AboutChsb: FC = () => {
         
         <FlexSpacer minHeight={2} />
 
-        <Stack direction="column" px={8}>
+        <Stack direction="column" px={isTablet ? 0 : 8}>
           <Typography weight="bold" size="h3">
             What is the CHSB?
           </Typography>
