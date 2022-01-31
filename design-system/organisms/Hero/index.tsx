@@ -18,7 +18,7 @@ interface HeroProps {
   chartData: any;
 }
 
-const StyledPageWrapper = styled(PageWrapper)<{ theme?: Theme }>`
+const StyledSection = styled.section<{ theme?: Theme }>`
   background: ${(props) =>
       `url(/images/background.png), ${props.theme.colors.secondaryGradient}`}
     no-repeat center center fixed;
@@ -152,77 +152,79 @@ const Hero: FC<HeroProps> = ({ chartData }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <StyledPageWrapper style={{ padding: "3rem inherit" }}>
-      <Headline sx={{ alignItems: "center" }}>
-        <StyledHeadline weight="bold" size="h1">
-          CHSB Performance Metrics
-        </StyledHeadline>
+    <StyledSection style={{ padding: "3rem inherit" }}>
+      <PageWrapper>
+        <Headline sx={{ alignItems: "center" }}>
+          <StyledHeadline weight="bold" size="h1">
+            CHSB Performance Metrics
+          </StyledHeadline>
 
-        <StyledText size="body">
-          Deep-dive into the statistics of CHSB and understand the mechanics of
-          the SwissBorg ecosystem.
-        </StyledText>
-      </Headline>
+          <StyledText size="body">
+            Deep-dive into the statistics of CHSB and understand the mechanics
+            of the SwissBorg ecosystem.
+          </StyledText>
+        </Headline>
 
-      <StyledStack>
-        <StyledChartHeader direction={isMobile ? "column" : "row"}>
-          <Stack direction="row">
-            <StyledImage
-              alt="flag"
-              src="/images/usa.png"
-              style={{
-                minWidth: "34px",
-                maxWidth: "2.1rem",
-                height: "2rem",
-                marginTop: ".2rem",
-              }}
-            />
+        <StyledStack>
+          <StyledChartHeader direction={isMobile ? "column" : "row"}>
+            <Stack direction="row">
+              <StyledImage
+                alt="flag"
+                src="/images/usa.png"
+                style={{
+                  minWidth: "34px",
+                  maxWidth: "2.1rem",
+                  height: "2rem",
+                  marginTop: ".2rem",
+                }}
+              />
 
-            <StyledArrowForwardIcon />
+              <StyledArrowForwardIcon />
 
-            <Avatar
-              alt="flag"
-              src="/images/chsb.png"
-              style={{ width: "2rem" }}
+              <Avatar
+                alt="flag"
+                src="/images/chsb.png"
+                style={{ width: "2rem" }}
+              />
+            </Stack>
+
+            <Stack direction="column">
+              <Typography size="h4">CHSB 0.90</Typography>
+
+              {isMobile ? (
+                <Typography size="span" color={theme.colors.primary}>
+                  +4.8% 24h
+                </Typography>
+              ) : (
+                <Typography size="span" color={theme.colors.red}>
+                  -4.8% 24h
+                </Typography>
+              )}
+            </Stack>
+          </StyledChartHeader>
+
+          <HeroChart chartData={chartData} />
+
+          <StyledChartFooter>
+            <Typography
+              size="h5"
+              sx={{ margin: "0 auto" }}
+              color={theme.colors.white30}
+            >
+              ALL
+            </Typography>
+          </StyledChartFooter>
+        </StyledStack>
+
+        {isMobile && (
+          <Stack mb={5}>
+            <ArrowDownwardIcon
+              sx={{ alignSelf: "center", color: theme.colors.primary }}
             />
           </Stack>
-
-          <Stack direction="column">
-            <Typography size="h4">CHSB 0.90</Typography>
-
-            {isMobile ? (
-              <Typography size="span" color={theme.colors.primary}>
-                +4.8% 24h
-              </Typography>
-            ) : (
-              <Typography size="span" color={theme.colors.red}>
-                -4.8% 24h
-              </Typography>
-            )}
-          </Stack>
-        </StyledChartHeader>
-
-        <HeroChart chartData={chartData} />
-
-        <StyledChartFooter>
-          <Typography
-            size="h5"
-            sx={{ margin: "0 auto" }}
-            color={theme.colors.white30}
-          >
-            ALL
-          </Typography>
-        </StyledChartFooter>
-      </StyledStack>
-
-      {isMobile && (
-        <Stack mb={5}>
-          <ArrowDownwardIcon
-            sx={{ alignSelf: "center", color: theme.colors.primary }}
-          />
-        </Stack>
-      )}
-    </StyledPageWrapper>
+        )}
+      </PageWrapper>
+    </StyledSection>
   );
 };
 
