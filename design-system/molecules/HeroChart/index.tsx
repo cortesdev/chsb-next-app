@@ -29,7 +29,7 @@ const HeroChart: FC<HeroChartProps> = ({ chartData }) => {
 
   return (
     <>
-      <ResponsiveContainer width="101%" height={270}>
+      <ResponsiveContainer width="101%" height={250}>
         <AreaChart data={data}>
           <defs>
             <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
