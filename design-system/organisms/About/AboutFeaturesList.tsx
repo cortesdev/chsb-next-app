@@ -14,13 +14,15 @@ export const AboutFeaturesList: FC = () => {
         sx={{
           display: "flex",
           alignItems: "center",
-          margin: "3rem auto",
+          margin: "0 auto",
         }}
       >
+        <FlexSpacer minHeight={4} />
+
         <Typography weight="bold" size="h3">
           What are its key features?
         </Typography>
-        
+
         <FlexSpacer minHeight={2} />
 
         <Typography size="body">
@@ -40,7 +42,7 @@ export const AboutFeaturesList: FC = () => {
             </Typography>
           </Stack>
 
-          <Typography size="h5" sx={{ minHeight: 70 }}>
+          <Typography weight="bold" size="h6" sx={{ minHeight: 70 }}>
             {items.subheadline}
           </Typography>
 
@@ -53,7 +55,7 @@ export const AboutFeaturesList: FC = () => {
           <FlexSpacer minHeight={2} />
 
           <Button variant="outlined" color="primary" fullWidth>
-           {items.headline}
+            {items.headline}
           </Button>
         </Grid>
       ))}

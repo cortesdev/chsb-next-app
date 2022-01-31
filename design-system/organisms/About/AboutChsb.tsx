@@ -7,13 +7,22 @@ export const AboutChsb: FC = () => {
   return (
     <>
       <Grid item xs={12} md={6}>
-        <img style={{padding: '50px 30px 20px 10px' }} src="/images/token-img.png"></img>
+        <Stack pt={10} px={4}>
+          <img           
+            src="/images/token-img.png"
+          />
+        </Stack>
       </Grid>
 
       <Grid item xs={12} md={6}>
-        <Stack direction="column">
-          <Typography weight="bold" size="h3">What is the CHSB?</Typography>
-          
+        
+        <FlexSpacer minHeight={2} />
+
+        <Stack direction="column" px={8}>
+          <Typography weight="bold" size="h3">
+            What is the CHSB?
+          </Typography>
+
           <FlexSpacer minHeight={2} />
 
           <Typography size="body">
@@ -24,9 +33,8 @@ export const AboutChsb: FC = () => {
 
           <FlexSpacer minHeight={2} />
 
-
           <Typography size="h4">The SwissBorg Token (CHSB)</Typography>
-          
+
           <FlexSpacer minHeight={2} />
 
           <Typography size="body">
@@ -35,9 +43,12 @@ export const AboutChsb: FC = () => {
             from the growth of the ecosystem.
           </Typography>
 
-
-
-          <Button variant="contained" color="primary" href="/"  sx={{ marginTop: 10 }}>
+          <Button
+            variant="contained"
+            color="primary"
+            href="/"
+            sx={{ marginTop: 10 }}
+          >
             See features
           </Button>
         </Stack>
