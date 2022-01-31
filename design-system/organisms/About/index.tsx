@@ -44,7 +44,7 @@ function a11yProps(index: number) {
   };
 }
 
-const About: FC<AboutProps> = ({isTablet, isMobile}) => {
+const About: FC<AboutProps> = ({ isTablet, isMobile }) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -61,7 +61,9 @@ const About: FC<AboutProps> = ({isTablet, isMobile}) => {
             margin: "2rem auto",
           }}
         >
-          <Typography weight="bold" size="h2">About our token</Typography>
+          <Typography weight="bold" size="h2">
+            About our token
+          </Typography>
 
           <FlexSpacer minHeight={2} />
 
@@ -71,10 +73,9 @@ const About: FC<AboutProps> = ({isTablet, isMobile}) => {
             GBP.
           </Typography>
           <FlexSpacer minHeight={4} />
-
         </Stack>
 
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "100%" }} mb={10}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <Tabs
               value={value}
@@ -99,8 +100,7 @@ const About: FC<AboutProps> = ({isTablet, isMobile}) => {
             </Grid>
           </TabPanel>
 
-          <TabPanel value={value} index={1}>       
-
+          <TabPanel value={value} index={1}>
             <Stack direction="row">
               <Grid
                 container

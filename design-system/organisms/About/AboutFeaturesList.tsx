@@ -39,6 +39,7 @@ export const AboutFeaturesList: FC = () => {
               padding: 4,
               display: "flex",
               flexDirection: "column",
+              borderRadius: 3
             }}
           >
             <Stack direction="row" mb={2}>
