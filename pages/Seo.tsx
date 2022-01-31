@@ -37,9 +37,18 @@ const Seo: FC = () => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@swissborg" />
       <meta name="twitter:creator" content="@cortesdev" />
-      <meta name="twitter:title" content="SWISSBORG Dashboard nextjs typescript app" />
-      <meta name="twitter:description" content="SWISSBORG Dashboard nextjs typescript app - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here." />
-      <meta name="twitter:image" content="https://pbs.twimg.com/card_img/1485358569365114886/10ZSuZpw?format=jpg&name=medium" />
+      <meta
+        name="twitter:title"
+        content="SWISSBORG Dashboard nextjs typescript app"
+      />
+      <meta
+        name="twitter:description"
+        content="SWISSBORG Dashboard nextjs typescript app - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than"
+      />
+      <meta
+        name="twitter:image"
+        content="https://pbs.twimg.com/card_img/1485358569365114886/10ZSuZpw?format=jpg"
+      />
       <meta name="pinterest" content="nopin" />
     </Head>
   );
