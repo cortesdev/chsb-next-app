@@ -10,14 +10,14 @@ import Typography from "../../atoms/Typography";
 interface DashboardProps {
   dashboard: any;
   theme?: Theme;
+  isMobile?: any;
+  isTablet?: any;
 }
 
 const StyledSection = styled.section<{ theme?: Theme }>`
-  background-size: cover;
-  height: 100%;
+  margin: 8rem 0 0;
 `;
 
- 
 const StyledGrid = styled(Grid)`
   @media (max-width: 900px) {
     flex-direction: column-reverse;
@@ -25,12 +25,11 @@ const StyledGrid = styled(Grid)`
 `;
 
 const StyledHeadline = styled(Typography)`
-  margin: 4rem auto 2rem;
+  margin: 2rem auto;
 `;
 
-const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
+const Dashboard: FC<DashboardProps> = ({ dashboard, isMobile}) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <StyledSection>

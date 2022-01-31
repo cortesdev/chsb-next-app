@@ -1,7 +1,7 @@
 import { colors, createTheme } from "@mui/material";
 
 declare module "@mui/material/styles" {
-  interface Theme {
+  interface Theme {   
     background: {
       color: string;
     };
@@ -180,9 +180,34 @@ declare module "@mui/material/styles" {
       };
     };
   }
+
+  interface Palette {
+    neutral: Palette['primary'];
+  }
+  interface PaletteOptions {
+    neutral: PaletteOptions['primary'];
+  }
+
+  interface PaletteColor {
+    darker?: string;
+  }
+  interface SimplePaletteColorOptions {
+    darker?: string;
+  }   
 }
 
+
 export const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#03c38d',
+      darker: '#053e85',
+    },
+    neutral: {
+      main: '#64748B',
+      contrastText: '#fff',
+    },
+  },
   background: {
     color: "#141414",
   },
