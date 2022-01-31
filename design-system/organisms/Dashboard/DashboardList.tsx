@@ -117,7 +117,7 @@ const DashboardList: FC<DashboardListProps> = ({ dashboard }) => {
       {dashboardItems.map((item, index) => (
         <StyledStack direction="row" key={index}>
           <ImageStack direction="row" sx={{ width: 80, height: 50 }}>
-            <Image src={item.url} alt={item.alt} width={60} height={20} />
+            <img src={item.url} alt={item.alt} width={60} height={45} />
           </ImageStack>
 
           <StyledStackItem direction={isTablet ? "column-reverse" : "row"}>
