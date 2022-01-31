@@ -1,6 +1,6 @@
 export const AboutFeatureItems = [
   {
-    url: "/svg/img1.svg",
+    url: "/svg/img7.svg",
     alt: "CHSB Yield 2.0",
     headline: "CHSB Yield 2.0",
     subheadline: "NEW FEATURE",
@@ -8,7 +8,7 @@ export const AboutFeatureItems = [
     button: "Start yielding",
   },
   {
-    url: "/svg/img2.svg",
+    url: "/svg/img5.svg",
     alt: "CHSB Buyback",
     headline: "CHSB Buyback",
     subheadline: "NEW FEATURE",
@@ -16,7 +16,7 @@ export const AboutFeatureItems = [
     button: "Tell me more",
   },
   {
-    url: "/svg/img3.svg",
+    url: "/svg/img8.svg",
     alt: "Community Index",
     headline: "Community Index",
     subheadline: "NEW FEATURE",
@@ -32,7 +32,7 @@ export const AboutFeatureItems = [
     button: "When Burn?",
   },
   {
-    url: "/svg/img5.svg",
+    url: "/svg/img2.svg",
     alt: "Staking",
     headline: "Staking",
     subheadline: "",
@@ -40,7 +40,7 @@ export const AboutFeatureItems = [
     button: "More CHSB metrics",
   },
   {
-    url: "/svg/img1.svg",
+    url: "/svg/img5.svg",
     alt: "Premium Benefits",
     headline: "Premium Benefits",
     subheadline: "",
@@ -48,7 +48,7 @@ export const AboutFeatureItems = [
     button: "Become a Premium member",
   },
   {
-    url: "/svg/img3.svg",
+    url: "/svg/img8.svg",
     alt: "Participation in referendums",
     headline: "Participation in referendums",
     subheadline: "Comming soon",
