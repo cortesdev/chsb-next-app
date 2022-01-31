@@ -5,6 +5,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "../utils/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  
   return (
     <IntlProvider locale="en">
       <ThemeProvider theme={theme}>

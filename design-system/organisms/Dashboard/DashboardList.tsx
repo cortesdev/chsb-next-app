@@ -25,6 +25,7 @@ const StyledFormattedNumber = styled.h2<{ theme?: Theme }>`
   @media (min-width: 900px) {
     margin-bottom: 0.2rem;
     margin-top: inherit;
+    font-size: 2rem;
   }
 `;
 
@@ -56,9 +57,13 @@ const StyledTypography = styled(Typography)<{ theme?: Theme }>`
 `;
 
 const StyledText = styled.span<{ theme?: Theme }>`
-  font-size: 0.8rem;
-  margin-left: 0.8rem;
+  font-size: .8rem;
+  margin-left: .8rem;
   color: ${(props) => props.theme.colors.primary};
+  
+  @media (min-width: 1000px) {
+    font-size: 1rem;
+  }
 `;
 
 const DashboardList: FC<DashboardListProps> = ({ dashboard }) => {
@@ -76,35 +81,35 @@ const DashboardList: FC<DashboardListProps> = ({ dashboard }) => {
 
   const dashboardItems = [
     {
-      url: "/images/icon1.png",
+      url: "/svg/img1.svg",
       alt: "item icon",
       headline: "Remaining circulating supply",
       number: dashboard?.chsbCirculatingSupplyTokens,
       text: "",
     },
     {
-      url: "/images/icon2.png",
+      url: "/svg/img2.svg",
       alt: "item icon",
       headline: "CHSB staked",
       number: dashboard?.chsbStackedTokens,
       text: "(10.75% of circulating supply)",
     },
     {
-      url: "/images/icon3.png",
+      url: "/svg/img3.svg",
       alt: "item icon",
       headline: "CHSB in Yield ",
       number: dashboard?.chsbYieldPledgedTokens,
       text: `(${dashboard?.chsbInYieldPercentage} % of circulating supply)`,
     },
     {
-      url: "/images/icon4.png",
+      url: "/svg/img4.svg",
       alt: "item icon",
       headline: "Circulating supply burned",
       number: dashboard?.chsbBurnedTokens,
       text: "",
     },
     {
-      url: "/images/icon5.png",
+      url: "/svg/img5.svg",
       alt: "item icon",
       headline: "CHSB in buyback pool",
       number: per(sum, dashboard?.totalSupplyBurnedPercentage),

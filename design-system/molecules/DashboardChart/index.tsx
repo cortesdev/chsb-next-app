@@ -1,28 +1,39 @@
-import {useMediaQuery, useTheme } from "@mui/material";
 import {
-  Cell,
-  LabelList,
-  Legend,
-  Pie,
-  PieChart,
   ResponsiveContainer,
+  PieChart,
+  Pie,
+  LabelList,
+  Cell,
+  Legend,
 } from "recharts";
+import { useMediaQuery, useTheme } from "@mui/material";
+import { FC } from "react";
 import BulletPoint from "../../atoms/BulletPoint";
 
+interface DashboardChartProps {
+  dashboard: any;
+}
+interface IKeys {
+  price: number;
+  time: string;
+}
 
-const DashboardChart = ({ dashboard }) => {
+const DashboardChart: FC<DashboardChartProps> = ({ dashboard }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  
   const sum =
     dashboard?.chsbCirculatingSupplyTokens +
     dashboard?.chsbBurnedTokens +
     dashboard?.chsbStackedTokens -
     dashboard?.chsbYieldPledgedTokens;
 
-  function per(num, amount) {
+  function per(num: any, amount: any) {
     return (num * amount) / 100;
   }
+
+  const buybackPool = per(sum, dashboard?.totalSupplyBurnedPercentage);
 
   const chartData = [
     {
@@ -45,7 +56,7 @@ const DashboardChart = ({ dashboard }) => {
     },
     {
       name: "In buyback pool",
-      value: per(sum, dashboard?.totalSupplyBurnedPercentage),
+      value: buybackPool,
       color: theme.colors.blue,
       fill: theme.colors.blueGradient,
     },
@@ -69,7 +80,7 @@ const DashboardChart = ({ dashboard }) => {
                 marginBottom: ".5rem",
               }}
             >
-              <BulletPoint fill={entry.color} width="20" />
+              <BulletPoint fill={entry.color} width="20" height="20" />
               <div style={{ marginLeft: 10 }}>{entry.name}</div>
             </div>
           );
@@ -98,9 +109,7 @@ const DashboardChart = ({ dashboard }) => {
               dataKey="name"
               position="outside"
               type="circle"
-              additive="sum"
-              //content={CustomizedMostPopularLabel}
-              // formatter={CustomLabel}
+              additive="sum"            
               style={{
                 stroke: "none",
                 fill: "rgb(142, 150, 161)",
@@ -120,7 +129,6 @@ const DashboardChart = ({ dashboard }) => {
             align="right"
             layout="vertical"
             verticalAlign="middle"
-            align="right"
           />
         )}
       </PieChart>
