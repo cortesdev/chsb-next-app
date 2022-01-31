@@ -12,14 +12,12 @@ interface DashboardProps {
   theme?: Theme;
 }
 
-const StyledPageWrapper = styled(PageWrapper)`
-  margin: 3rem 0;
-
-  @media (max-width: 900px) {
-    margin: 6rem 0;
-  }
+const StyledSection = styled.section<{ theme?: Theme }>`
+  background-size: cover;
+  height: 100%;
 `;
 
+ 
 const StyledGrid = styled(Grid)`
   @media (max-width: 900px) {
     flex-direction: column-reverse;
@@ -35,26 +33,28 @@ const Dashboard: FC<DashboardProps> = ({ dashboard }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <StyledPageWrapper>
-      <StyledHeadline weight="bold" size={isMobile ? 'h5' : 'h4'}>
-        A breakdown of CHSB's circulating supply
-      </StyledHeadline>
+    <StyledSection>
+      <PageWrapper>
+        <StyledHeadline weight="bold" size={isMobile ? "h5" : "h4"}>
+          A breakdown of CHSB's circulating supply
+        </StyledHeadline>
 
-      <StyledGrid
-        container
-        rowSpacing={4}
-        spacing={24}
-        columnSpacing={{ sm: 2 }}
-      >
-        <Grid item sm={12} md={6}>
-          <DashboardList dashboard={dashboard} />
-        </Grid>
+        <StyledGrid
+          container
+          rowSpacing={4}
+          spacing={24}
+          columnSpacing={{ sm: 2 }}
+        >
+          <Grid item sm={12} md={6}>
+            <DashboardList dashboard={dashboard} />
+          </Grid>
 
-        <Grid item sm={12} md={6}>
-          <DashboardChart dashboard={dashboard} />
-        </Grid>
-      </StyledGrid>
-    </StyledPageWrapper>
+          <Grid item sm={12} md={6}>
+            <DashboardChart dashboard={dashboard} />
+          </Grid>
+        </StyledGrid>
+      </PageWrapper>
+    </StyledSection>
   );
 };
 

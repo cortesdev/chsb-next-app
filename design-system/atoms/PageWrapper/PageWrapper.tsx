@@ -5,8 +5,8 @@ export const PageWrapper = styled.div<{ theme?: Theme }>`
     display: block;
     align-items: flex-start;
     justify-content: center;
-    background-color: ${(props) => props.theme.palette.background.default};
-    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
 
     padding-left: 6rem;
     padding-right: 6rem;
@@ -21,5 +21,10 @@ export const PageWrapper = styled.div<{ theme?: Theme }>`
     @media (max-width: 600px) {
         padding-left: 2rem;
         padding-right: 2rem;
+    }
+
+        
+    @media (max-width: 1000px) {
+       max-width: 100rem;   
     }
 `;
