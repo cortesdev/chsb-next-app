@@ -30,11 +30,7 @@ const Seo: FC = () => {
       <meta property="og:type" content="website" />
       <meta
         property="og:image"
-<<<<<<< HEAD
-        content="https://og-image.vercel.app/**Hello**%20World.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-black.svg&images=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fremojansen%2Flogo.ts%40master%2Fts.svg"
-=======
         content="https://og-image.vercel.app/**CHSB**%20Dahboard.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg&images=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fremojansen%2Flogo.ts%40master%2Fts.svg&images=https%3A%2F%2Fswissborg-website.cdn.prismic.io%2Fswissborg-website%2Faa90e56e-bbcd-43ad-af4f-f30077c1241f_CHSB-shadow-icon.svg%3Fixlib%3DgatsbyFP%26auto%3Dcompress%252Cformat%26fit%3Dmax%26q%3D50%26w%3D400%26h%3D400"
->>>>>>> staging
       />
     </Head>
   );
