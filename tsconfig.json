@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "design-system/molecules/DashboardChart/index.jsx", "design-system/molecules/DashboardChart/index.jsx", "design-system/atoms/BulletPoint/index.jsx"],
   "exclude": ["node_modules"]
 }

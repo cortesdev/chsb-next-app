@@ -2,13 +2,19 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'chsb-regular',-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "chsb regular", -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
 }
 
-h1, h2, h3, h4 {
-  font-family: 'chsb-bold';
+a {
+  cursor: pointer;
 }
+
+img {
+  width: 100%;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -18,42 +24,64 @@ a {
   box-sizing: border-box;
 }
 
-
 @font-face {
-  font-family: "chsb-extralight";
+  font-family: "chsb extralight";
   src: url("/fonts/TTCommons-ExtraLight.woff2");
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-} 
+}
 @font-face {
-  font-family: "chsb-Light";
+  font-family: "chsb light";
   src: url("/fonts/TTCommons-Light.woff2");
   font-style: normal;
   font-weight: 200;
   font-display: swap;
-} 
+}
 @font-face {
-  font-family: "chsb-thin";
+  font-family: "chsb thin";
   src: url("/fonts/TTCommons-Thin.woff2");
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-} 
+}
 @font-face {
-  font-family: "chsb-regular";
+  font-family: "chsb regular";
   src: url("/fonts/TTCommons-Regular.woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-} 
+}
 @font-face {
-  font-family: "chsb-bold";
+  font-family: "chsb bold";
   src: url("/fonts/TTCommons-DemiBold.woff2");
   font-style: bold;
   font-weight: 700;
   font-display: swap;
-} 
+}
+
+:root .recharts-legend-wrapper .recharts-default-legend {
+  display: grid !important; 
+  text-align: left;
+  margin-bottom: -30px;
+}
+
+/* 
+.bulletpoint {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border: 1px solid red;
+} */
 
 
+.customized-legend--wrapper {  
+  display:  flex;
+  flex-direction: row;
+ }
  
+ .svgIcon-use {
+  -webkit-filter: drop-shadow( -1px 1px 2px rgba(0, 0, 0, .3));
+  filter: drop-shadow( -1px 1px 2px rgba(0, 0, 0, .3));
+  /* Similar syntax to box-shadow */
+}
