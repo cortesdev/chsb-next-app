@@ -43,12 +43,12 @@ export const AboutFeaturesList: FC = () => {
             {items.subheadline && (
               <Chip
                 sx={{
-                  width: "40%",
+                  width: "fit-content",
                   maxWidth: "50%",
                   fontSize: ".6rem",
                   background: `${theme.colors.primaryTint9}`,
                   color: `${theme.colors.primary}`,
-                  marginBottom: 1,
+                  marginBottom: 3,
                 }}                
                 label={items.subheadline}
               />
