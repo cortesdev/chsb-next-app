@@ -47,7 +47,7 @@ const Seo: FC = () => {
       />
       <meta
         name="twitter:image"
-        content="https://pbs.twimg.com/card_img/1485358569365114886/10ZSuZpw?format=jpg"
+        content="https://pbs.twimg.com/card_img/1485358569365114886/10ZSuZpw?format=jpg&name=medium"
       />
       <meta name="pinterest" content="nopin" />
     </Head>
